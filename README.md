@@ -6,10 +6,22 @@ Este programa implementa una solución al **problema del mono y la banana** usan
 ## 🛠️ Algoritmo de búsqueda Best-First Search
 El programa utiliza el algoritmo **Best-First Search**, el cual selecciona en cada iteración **la mejor acción posible** basada en una heurística.
 
-### 🔍 Heurística utilizada
-- **Si el mono no está sobre la caja:** la heurística mide la distancia entre el mono y la caja.
-- **Si el mono está sobre la caja:** la heurística mide la distancia entre la caja y la banana.
-- **Si el mono tiene la banana:** la heurística es `0`, ya que se ha alcanzado el objetivo.
+### 🔍 Cálculo de la heurística y lógica del algoritmo
+El programa evalúa el estado actual y selecciona la acción óptima en cada paso, siguiendo esta lógica:
+
+1. **Si el mono no está sobre la caja**, primero debe buscarla:
+   - Si `Pos_Mono < Pos_Caja`, el mono se moverá a la **derecha** (`Pos_Mono + 1`).
+   - Si `Pos_Mono > Pos_Caja`, el mono se moverá a la **izquierda** (`Pos_Mono - 1`).
+   - Si `Pos_Mono == Pos_Caja`, el mono **sube** a la caja.
+
+2. **Si el mono está sobre la caja**, entonces mueve la caja hacia la banana:
+   - Si `Pos_Caja < Pos_Banana`, el mono mueve la caja a la **derecha** (`Pos_Caja + 1`).
+   - Si `Pos_Caja == Pos_Banana`, el mono **toma la banana** y termina el proceso.
+
+3. **Cada vez que se realiza una acción, se recalcula la heurística** `H`:
+   - Si el mono busca la caja: `H = |Pos_Mono - Pos_Caja|`
+   - Si el mono mueve la caja: `H = |Pos_Caja - Pos_Banana|`
+   - Si el mono tiene la banana: `H = 0`
 
 Cada acción tiene un costo:
 - **Moverse a la izquierda o derecha**: `1`
@@ -38,6 +50,17 @@ Los elementos en el mapa se representan como:
 - `C` → Caja
 - `X` → Mono sobre la caja
 - `B` → Banana (siempre en la última posición)
+
+## 🔄 Secuencia de pasos del algoritmo
+1. **Evaluar el estado actual.**
+   - Determinar si el mono ya tiene la banana.
+   - Si no la tiene, calcular `H` para los posibles movimientos.
+2. **Si el mono no está sobre la caja, moverse hacia ella** (reduciendo `|Pos_Mono - Pos_Caja|`).
+3. **Si el mono está sobre la caja, moverse hacia la banana** (reduciendo `|Pos_Caja - Pos_Banana|`).
+4. **Seleccionar la mejor acción posible** basada en `H`.
+5. **Ejecutar la acción y actualizar el estado.**
+6. **Imprimir el estado actualizado, el costo acumulado y la acción seleccionada.**
+7. **Repetir hasta que el mono tenga la banana.**
 
 ## 🖥️ Ejecución del programa
 Para ejecutar un ejemplo, usa:
