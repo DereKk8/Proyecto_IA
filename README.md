@@ -70,5 +70,3 @@ Costo Total Final: 7
 - **El programa garantiza que el mono siempre tomará las mejores decisiones** basadas en la heurística.
 - **Cada acción es impresa en pantalla** con su costo y heurística.
 
-📚 ¡Utiliza este README como guía para entender el código y estudiar el algoritmo Best-First Search en Prolog! 🚀
-
