@@ -41,9 +41,9 @@ Donde:
 - `Tiene_Banana`: Indica si el mono ha alcanzado la banana (`si` o `no`).
 
 ## 🗺️ Representación del mapa
-El mapa tiene **un tamaño fijo de 6 posiciones**, representado en una lista:
+El mapa tiene **un tamaño fijo de n posiciones**, representado en una lista:
 ```
-[ 0, 1, 2, 3, 4, 5 ]
+[ 0, 1, 2, 3, 4, 5 , ...]
 ```
 Los elementos en el mapa se representan como:
 - `M` → Mono
@@ -65,11 +65,12 @@ Los elementos en el mapa se representan como:
 ## 🖥️ Ejecución del programa
 Para ejecutar un ejemplo, usa:
 ```prolog
-?- ejemplo(PosMono, PosCaja).
+?- ejemplo(PosMono, PosCaja, PosBanana).
 ```
 Donde:
 - `PosMono`: Posición inicial del mono.
 - `PosCaja`: Posición inicial de la caja.
+- `PosBanana`: Posición inicial de la banana.
 
 **Ejemplo:**
 ```prolog
@@ -89,7 +90,6 @@ Costo Total Final: 7
 ```
 
 ## 📌 Notas importantes
-- **El tamaño del mapa es fijo (6 posiciones).**
 - **El programa garantiza que el mono siempre tomará las mejores decisiones** basadas en la heurística.
 - **Cada acción es impresa en pantalla** con su costo y heurística.
 
